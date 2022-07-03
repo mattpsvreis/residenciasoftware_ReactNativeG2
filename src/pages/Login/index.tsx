@@ -23,14 +23,13 @@ const Login = ({ navigation }: any) => {
         if (!respostaLogin) {
             Alert.alert(
                 "Erro",
-                "",
+                "Não foi possível realizar o login. Tente novamente.",
                 [
                     { text: "OK" },
-                    { text: "Não foi possível realizar o login." },
                 ]
             );
         } else {
-            navigation.navigate('HomeScreen');
+            navigation.navigate('Home');
         }
 
     }
