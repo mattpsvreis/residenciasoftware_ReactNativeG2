@@ -3,7 +3,8 @@ import AxiosInstance from '../../api/AxiosInstance';
 
 import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
-import { Image, Text } from 'react-native-elements';
+import { Image } from 'react-native-elements';
+import Text from '../../components/Text';
 
 import CategoriaType from '../../models/CategoriaType';
 import ProdutoType from '../../models/ProdutoType';
@@ -84,6 +85,9 @@ const Home = ({ navigation }: any) => {
           data={categorias}
           keyExtractor={(k, i) => i.toString()}
           renderItem={response => <CategoriaButton categoria={response.item} navigation={navigation} styles={styles} />}
+          ItemSeparatorComponent={
+            () => <View style={{width: 16}} />
+          }
         />
       }
       <Text style={styles.titleProdutos}>Produtos</Text>
