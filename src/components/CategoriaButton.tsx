@@ -22,7 +22,9 @@ const CategoriaButton = (props: any) => {
   };
 
   const handlePress = () => {
-    return null; //TODO
+    props.navigation.navigate({name: 'Categoria', params: {
+      categoria: props.categoria,
+    }})
   }
   
   return (
