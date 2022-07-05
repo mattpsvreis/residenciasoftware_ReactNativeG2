@@ -2,8 +2,8 @@ import React from 'react'
 import AxiosInstance from '../../api/AxiosInstance';
 
 import { AutenticacaoContext } from '../../context/AutenticacaoContext';
-import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
-import { Image } from 'react-native-elements';
+import { ActivityIndicator, ScrollView, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { Icon, Image, Input } from 'react-native-elements';
 import Text from '../../components/Text';
 
 import CategoriaType from '../../models/CategoriaType';
@@ -24,6 +24,10 @@ const Home = ({ navigation }: any) => {
 
   const [categoriasIsLoading, setCategoriasIsLoading] = React.useState(true);
   const [produtosIsLoading, setProdutosIsLoading] = React.useState(true);
+
+  const [search, setSearch] = React.useState('');
+
+  const [produtosSearch, setProdutosSearch] = React.useState([]);
 
   const getDadosCategorias = async () => {
     AxiosInstance
@@ -49,9 +53,39 @@ const Home = ({ navigation }: any) => {
       });
   }
 
+  const getDadosProdutosBusca = async () => {
+    AxiosInstance.get(`/produto/busca?keyword=${search}`, {
+      headers: { Authorization: `Bearer ${usuario.token}` },
+    })
+      .then(result => {
+        setProdutosSearch(result.data);
+      })
+      .catch(error => {
+        console.log(
+          'Erro ao carregar a lista de produtos - ' + JSON.stringify(error),
+        );
+      });
+  };
+
+  const pesquisarProduto = (search: string) => {
+    if (search !== '') {
+      getDadosProdutosBusca();
+    } else {
+      setProdutosSearch([]);
+    }
+  };
+
   const handleOfferPress = () => {
     return null; //TODO
-  }
+  };
+
+  const handleSearchPress = () => {
+    return null; //TODO
+  };
+
+  React.useEffect(() => {
+    pesquisarProduto(search);
+  }, [search]);
 
   React.useEffect(() => {
     getDadosCategorias();
@@ -59,10 +93,43 @@ const Home = ({ navigation }: any) => {
   }, []);
 
   return (
-    <View style={styles.body}>
-      <View style={styles.searchbar}>
-
+    <ScrollView contentContainerStyle={styles.body}>
+      <View>
+        <Input
+          placeholder="Buscar Produto"
+          onChangeText={setSearch}
+          inputContainerStyle={styles.searchInput}
+          inputStyle={styles.searchInputText}
+          value={search}
+          autoCompleteType={undefined}
+          errorStyle={{ display: 'none' }}
+          leftIcon={
+            <Icon
+              name='search'
+              color='#dc1e3e'
+              type="font-awesome"
+              size={24}
+              containerStyle={styles.searchIcon}
+              tvParallaxProperties={undefined}
+            />
+          }
+        />
       </View>
+      {produtosSearch.length < 1 ? null :
+        <View style={styles.searchResults}>
+          {
+            produtosSearch.map((k, i) => (
+              <TouchableHighlight key={i} activeOpacity={1} underlayColor={'#dc1e3e'}>
+                <Text
+                  style={styles.searchResult}
+                  onPress={handleSearchPress}
+                >
+                  {k.nomeProduto}
+                </Text>
+              </TouchableHighlight>))
+          }
+        </View>
+      }
       <View style={styles.offer}>
         <TouchableOpacity onPress={handleOfferPress}>
           <Image
@@ -86,7 +153,7 @@ const Home = ({ navigation }: any) => {
           keyExtractor={(k, i) => i.toString()}
           renderItem={response => <CategoriaButton categoria={response.item} navigation={navigation} styles={styles} />}
           ItemSeparatorComponent={
-            () => <View style={{width: 16}} />
+            () => <View style={{ width: 16 }} />
           }
         />
       }
@@ -95,15 +162,17 @@ const Home = ({ navigation }: any) => {
         <ActivityIndicator size='large' color='#DC1E3E' />
         :
         <FlatList
-          horizontal={false}
-          numColumns={2}
+          horizontal={true}
           style={styles.produtosContainer}
           data={produtos}
           keyExtractor={(k, i) => i.toString()}
           renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
+          ItemSeparatorComponent={
+            () => <View style={{ width: 0 }} />
+          }
         />
       }
-    </View>
+    </ScrollView>
   )
 }
 

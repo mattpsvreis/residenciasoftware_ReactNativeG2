@@ -10,11 +10,46 @@ const styles = StyleSheet.create({
     container: {
 
     },
-    searchbar: {
+    searchInput: {
+        borderWidth: 1,
+        borderColor: '#1114',
+        borderStyle: 'solid',
+        borderRadius: 5,
+        paddingHorizontal: 16,
+        marginHorizontal: -10,
+    },
+    searchInputText: {
+        marginLeft: 8,
+        textDecorationLine: 'none',
+        paddingBottom: 8,
+    },
+    searchIcon: {
 
     },
+    searchResults: {
+        backgroundColor: '#fff',
+        width: 379,
+        position: 'absolute',
+        zIndex: 999,
+        top: 63,
+        right: 16,
+        borderStyle: 'solid',
+        borderLeftWidth: 1,
+        borderBottomWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "#1114",
+        paddingVertical: 6,
+        paddingHorizontal: 10,
+    },
+    searchResult: {
+        fontSize: 16,
+        borderTopColor: '#1118',
+        borderTopWidth: 1,
+        borderStyle: 'solid',
+        paddingVertical: 6,
+    },
     offer: {
-
+        marginTop: 16,
     },
     offerImage: {
         height: 200,
@@ -72,10 +107,34 @@ const styles = StyleSheet.create({
         fontSize: 22,
         letterSpacing: 0.5,
         marginTop: 16,
-        marginBottom: 12,
     },
     produtosContainer: {
-
+        padding: 0,
+        paddingBottom: 10,
+        marginHorizontal: -13,
+    },
+    produtoContainer: {
+        width: 165,
+        height: 229,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    produtoContainerImage: {
+        width: 133,
+        height: 133,
+        borderRadius: 5,
+        marginBottom: 10
+    },
+    textCardTitle: {
+        textAlign: 'left',
+        fontWeight: 'bold',
+        fontSize: 14,
+    },
+    textCardValue: {
+        textAlign: 'left',
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#dc1e3e',
     },
 });
 
