@@ -35,7 +35,12 @@ const styles = StyleSheet.create({
     },
     logoutButton: {
         backgroundColor: '#dc1e3e',
+        height: 57,
+        borderRadius: 5,
     },
+    logoutButtonText: {
+        fontSize: 20,
+    }
 })
 
 export default styles;
