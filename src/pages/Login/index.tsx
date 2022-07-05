@@ -77,7 +77,7 @@ const Login = ({ navigation }: any) => {
             {loading ?
                 <ActivityIndicator
                     size='large'
-                    color='#fff' />
+                    color='#DC1E3E' />
                 :
                 <Button
                     buttonStyle={styles.button}
