@@ -34,7 +34,7 @@ export default function Categoria({ route, navigation }: any) {
     }
 
     const handleReturn = () => {
-        navigation.navigate('HomeTabScreen')
+        navigation.goBack()
     }
 
     React.useEffect(() => {
@@ -49,7 +49,7 @@ export default function Categoria({ route, navigation }: any) {
                         name='arrow-left'
                         color="#dc1e3e"
                         type='material-community'
-                        size={42}
+                        size={36}
                         tvParallaxProperties={undefined}
                     />
                 </TouchableHighlight>
@@ -62,7 +62,7 @@ export default function Categoria({ route, navigation }: any) {
                     data={produtos}
                     horizontal={false}
                     contentContainerStyle={styles.produtosContainer}
-                    renderItem={response => <ProdutoCard produto={response.item} styles={styles} />}
+                    renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
                     ItemSeparatorComponent={
                         () => <View style={{ width: 10 }} />
                     }

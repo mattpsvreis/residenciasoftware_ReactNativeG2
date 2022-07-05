@@ -16,12 +16,13 @@ const styles = StyleSheet.create({
         paddingBottom: 9,
         paddingLeft: 10,
         width: '100%',
+        marginTop: -8,
     },
     title: {
         marginLeft: 10,
         marginTop: 2,
         textAlign: 'center',
-        fontSize: 28,
+        fontSize: 24,
     },
     produtosContainer: {
         padding: 0,
