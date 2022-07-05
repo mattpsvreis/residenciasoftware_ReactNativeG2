@@ -44,7 +44,7 @@ const Produto = ({ route, navigation }: any) => {
             {loadingAddToCart ?
                 <ActivityIndicator size='large' color='#DC1E3E' />
                 :
-                <Button onPress={handleAddToCart} buttonStyle={styles.buttonAddToCart} title='ADICIONAR AO CARRINHO' />
+                <Button onPress={handleAddToCart} buttonStyle={styles.buttonAddToCart} titleStyle={styles.buttonAddToCartText} title='ADICIONAR AO CARRINHO' />
             }
         </View>
     )
@@ -77,6 +77,11 @@ export const styles = StyleSheet.create({
     buttonAddToCart: {
         backgroundColor: '#dc1e3e',
         marginHorizontal: 16,
+        height: 57,
+        borderRadius: 5,
+    },
+    buttonAddToCartText: {
+        fontSize: 20,
     },
 });
 
