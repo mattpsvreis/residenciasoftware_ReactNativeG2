@@ -168,7 +168,7 @@ const Home = ({ navigation }: any) => {
           keyExtractor={(k, i) => i.toString()}
           renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
           ItemSeparatorComponent={
-            () => <View style={{ width: 0 }} />
+            () => <View style={{ width: 10 }} />
           }
         />
       }
