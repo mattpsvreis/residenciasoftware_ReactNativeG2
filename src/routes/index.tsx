@@ -119,8 +119,7 @@ export default function Routes() {
           name='Produto'
           component={Produto}
         />
-      </StackNavigation.Navigator>
-      <StackNavigation.Screen
+        <StackNavigation.Screen
           name='ForgotPassword'
           component={ForgotPassword}
         />
