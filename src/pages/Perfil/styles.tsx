@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     logoutButtonText: {
-        fontSize: 20,
+        fontSize: 18,
     }
 })
 

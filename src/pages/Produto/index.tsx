@@ -30,7 +30,7 @@ const Produto = ({ route, navigation }: any) => {
     return (
         <View style={styles.body}>
             <View style={styles.header}>
-                <TouchableHighlight onPress={handleReturn}>
+                <TouchableHighlight onPress={handleReturn} underlayColor='#dc1e3e' style={{borderRadius: 150}}>
                     <Icon
                         name='arrow-left'
                         color="#dc1e3e"
@@ -81,7 +81,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
     },
     buttonAddToCartText: {
-        fontSize: 20,
+        fontSize: 18,
     },
 });
 

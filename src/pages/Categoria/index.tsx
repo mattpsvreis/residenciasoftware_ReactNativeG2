@@ -44,7 +44,7 @@ export default function Categoria({ route, navigation }: any) {
     return (
         <View style={styles.body}>
             <View style={styles.header}>
-                <TouchableHighlight onPressIn={handleReturn}>
+                <TouchableHighlight onPress={handleReturn} underlayColor='#dc1e3e' style={{borderRadius: 150}}>
                     <Icon
                         name='arrow-left'
                         color="#dc1e3e"
