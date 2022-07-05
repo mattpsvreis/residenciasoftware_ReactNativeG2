@@ -16,6 +16,7 @@ export const AutenticacaoProvider = ({children}: any) => {
                 id: respostaServiceLogin?.id,
                 name: respostaServiceLogin?.name,
                 email: respostaServiceLogin?.email,
+                foto: respostaServiceLogin?.foto_perfil,
                 token: respostaServiceLogin?.token,
             });
             return true;

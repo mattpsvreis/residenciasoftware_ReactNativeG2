@@ -3,8 +3,6 @@ import AxiosInstance from '../api/AxiosInstance';
 import jwt_decode from 'jwt-decode';
 
 const LoginService = async (email: string, senha: string) => {
-    console.log(`LoginService.Email: ${email}`)
-    console.log(`LoginService.Senha: ${senha}`)
 
     var tokenDecoded:any = null;
 
