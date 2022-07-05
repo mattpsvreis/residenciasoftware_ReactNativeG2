@@ -32,6 +32,18 @@ const styles = StyleSheet.create({
     },
     profileEmail: {
         fontSize: 14,
+        marginTop: 2,
+    },
+    profileId: {
+        fontSize: 14,
+        marginTop: 2,
+    },
+    profileResetPassword: {
+        color: '#DC1E3E',
+        marginTop: 2,
+        fontSize: 14,
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
     },
     logoutButton: {
         backgroundColor: '#dc1e3e',
