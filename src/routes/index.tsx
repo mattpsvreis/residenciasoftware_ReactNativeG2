@@ -12,6 +12,7 @@ import Favoritos from '../pages/Favoritos'
 import Carrinho from '../pages/Carrinho'
 import Perfil from '../pages/Perfil'
 import Categoria from '../pages/Categoria';
+import Produto from '../pages/Produto';
 
 const StackNavigation = createNativeStackNavigator();
 const TabNavigation = createBottomTabNavigator();
@@ -112,6 +113,10 @@ export default function Routes() {
         <StackNavigation.Screen
           name='Categoria'
           component={Categoria}
+        />
+        <StackNavigation.Screen
+          name='Produto'
+          component={Produto}
         />
       </StackNavigation.Navigator>
     </NavigationContainer>
