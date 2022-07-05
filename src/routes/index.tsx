@@ -14,6 +14,7 @@ import Perfil from '../pages/Perfil'
 import Categoria from '../pages/Categoria';
 import Produto from '../pages/Produto';
 import ForgotPassword from '../pages/ForgotPassword';
+import Cadastro from '../pages/Cadastro';
 
 const StackNavigation = createNativeStackNavigator();
 const TabNavigation = createBottomTabNavigator();
@@ -108,6 +109,14 @@ export default function Routes() {
           component={Login}
         />
         <StackNavigation.Screen
+          name='Cadastro'
+          component={Cadastro}
+        />
+        <StackNavigation.Screen
+          name='ForgotPassword'
+          component={ForgotPassword}
+        />
+        <StackNavigation.Screen
           name='Home'
           component={BottomTabNavigator}
         />
@@ -118,10 +127,6 @@ export default function Routes() {
         <StackNavigation.Screen
           name='Produto'
           component={Produto}
-        />
-        <StackNavigation.Screen
-          name='ForgotPassword'
-          component={ForgotPassword}
         />
       </StackNavigation.Navigator>
     </NavigationContainer>
