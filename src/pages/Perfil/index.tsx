@@ -30,7 +30,7 @@ export default function Perfil({navigation}: any) {
         <Text style={styles.profileName}>{usuario.name}</Text>
         <Text style={styles.profileEmail}>{usuario.email}</Text>
       </View>
-      <Button buttonStyle={styles.logoutButton} onPress={handleLogout} title='Logout'/>
+      <Button buttonStyle={styles.logoutButton} onPress={handleLogout} title='SAIR'/>
     </View>
   )
 }
