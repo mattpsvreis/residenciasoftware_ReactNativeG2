@@ -8,6 +8,9 @@ import { Icon } from 'react-native-elements';
 
 import Login from '../pages/Login'
 import Home from '../pages/Home'
+import Favoritos from '../pages/Favoritos'
+import Carrinho from '../pages/Carrinho'
+import Perfil from '../pages/Perfil'
 
 const StackNavigation = createNativeStackNavigator();
 const TabNavigation = createBottomTabNavigator();
@@ -17,9 +20,10 @@ const BottomTabNavigator = () => {
     <TabNavigation.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: { backgroundColor: '#1c162b', borderTopWidth: 0, borderBottomWidth: 0 },
-        tabBarActiveTintColor: '#b192ff',
+        // tabBarShowLabel: false,
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '600', },
+        tabBarStyle: { backgroundColor: '#fff', borderTopWidth: 2, borderBottomWidth: 0, height: 55, },
+        tabBarActiveTintColor: '#dc1e3e',
       }}
     >
       <TabNavigation.Screen
@@ -30,9 +34,57 @@ const BottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <Icon
               name='home'
-              color={focused ? "#b192ff" : "#fff"}
+              color={focused ? "#dc1e3e" : "#151515"}
               type='material-community'
-              size={30}
+              size={32}
+              tvParallaxProperties={undefined}
+            />
+          ),
+        }}
+      />
+      <TabNavigation.Screen
+        name='FavoritosTabScreen'
+        component={Favoritos}
+        options={{
+          tabBarLabel: 'Favoritos',
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name='tag'
+              color={focused ? "#dc1e3e" : "#151515"}
+              type='material-community'
+              size={28}
+              tvParallaxProperties={undefined}
+            />
+          ),
+        }}
+      />
+      <TabNavigation.Screen
+        name='CarrinhoTabScreen'
+        component={Carrinho}
+        options={{
+          tabBarLabel: 'Carrinho',
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name='cart'
+              color={focused ? "#dc1e3e" : "#151515"}
+              type='material-community'
+              size={28}
+              tvParallaxProperties={undefined}
+            />
+          ),
+        }}
+      />
+      <TabNavigation.Screen
+        name='PerfilTabScreen'
+        component={Perfil}
+        options={{
+          tabBarLabel: 'Perfil',
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name='account'
+              color={focused ? "#dc1e3e" : "#151515"}
+              type='material-community'
+              size={28}
               tvParallaxProperties={undefined}
             />
           ),
