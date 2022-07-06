@@ -16,33 +16,27 @@ const styles = StyleSheet.create({
 
     form: {
         width: "92%",
-
         marginTop: 5,
         padding: 10,
     },
 
     formInput: {
-        height: 50,
-        marginVertical: 12,
-        paddingLeft: 15,
-        borderRadius: 50,
-        fontSize: 18,
-
-        backgroundColor: "#f6f6f6",
+        backgroundColor: '#fff',
+        borderColor: '#1114',
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 10,
+        marginBottom: 12,
+        fontSize: 16,
     },
 
     buttonForm: {
-        alignItems: "center",
-        justifyContent: "center",
-
-        width: "90%",
-        margin: 10,
         marginLeft: 15,
         marginTop: 20,
         paddingVertical: 16,
 
-        backgroundColor: "#FF0043",
-        borderRadius: 50,
+        backgroundColor: "#dc1e3e",
+        borderRadius: 10,
     },
 
     textButton: {

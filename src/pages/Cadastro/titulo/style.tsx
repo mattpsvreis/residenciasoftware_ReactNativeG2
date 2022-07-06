@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
     },
 
     textTitle: {
-        color: "black",
+        color: "#223263",
+        textShadowColor: '#223263',
+        textShadowRadius: 4,
         fontSize: 24,
         fontWeight: "bold",
         marginBottom: 10,

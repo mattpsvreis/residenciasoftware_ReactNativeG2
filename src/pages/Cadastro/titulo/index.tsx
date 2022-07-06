@@ -8,7 +8,7 @@ export default function Title() {
         <View style={styles.boxTitle} >
             <Image
                 style={styles.tinyLogo}
-                source={require('../../../assets/logo.png')} />
+                source={require('../../../assets/logoDV.png')} />
             <Text style={styles.textTitle} >Vamos começar</Text>
             <Text style={styles.subTitle} >Criar uma nova conta</Text>
         </View>
