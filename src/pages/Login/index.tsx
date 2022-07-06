@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import { Input, Icon, Button, Image } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import Text from '../../components/Text';
 
