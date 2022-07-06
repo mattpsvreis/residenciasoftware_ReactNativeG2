@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         marginTop: 2,
         textAlign: 'center',
         fontSize: 24,
+        letterSpacing: 0.5,
     },
     boxTitulo: {
         flexDirection: 'row',
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
         color: '#000',
         textAlign: 'center',
         fontSize: 26,
+        letterSpacing: 0.5,
         fontWeight: 'bold',
         width: '90%',
     },
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     },
     buttonTitle: {
         fontSize: 20,
+        letterSpacing: 0.5,
         fontWeight: '600',
     },
     boxModal: {
@@ -105,11 +108,13 @@ const styles = StyleSheet.create({
     },
     tituloPopup: {
         fontSize: 18,
+        letterSpacing: 0.5,
         fontWeight: '700',
     },
     subTitlePopup: {
         marginTop: 9,
         fontSize: 15,
+        letterSpacing: 0.5,
         fontWeight: '500',
     },
     boxBotaoPopup: {

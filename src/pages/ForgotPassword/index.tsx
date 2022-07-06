@@ -180,7 +180,7 @@ const ForgotPassword = ({ navigation }: any) => {
               title="VOLTAR"
               containerStyle={styles.boxBotaoPopup}
               buttonStyle={styles.buttaoPopup}
-              titleStyle={{ fontSize: 18 }}
+              titleStyle={{ fontSize: 18, letterSpacing: 0.5, }}
               onPress={() => {
                 setPopupError(false);
                 setErrorMessage(e => '');
@@ -208,7 +208,7 @@ const ForgotPassword = ({ navigation }: any) => {
               title="VOLTAR"
               containerStyle={styles.boxBotaoPopup}
               buttonStyle={styles.buttaoPopup}
-              titleStyle={{ fontSize: 18 }}
+              titleStyle={{ fontSize: 18, letterSpacing: 0.5, }}
               onPress={() => navigation.goBack()}
             />
           </View>

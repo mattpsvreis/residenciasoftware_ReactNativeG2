@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         fontSize: 16,
+        letterSpacing: 0.5,
         marginBottom: -12,
     },
     buttonForm: {
@@ -33,19 +34,23 @@ const styles = StyleSheet.create({
     },
     textButton: {
         fontSize: 20,
+        letterSpacing: 0.5,
         fontWeight: "600",
         color: "#ffffff",
     },
     subTitle: {
         fontSize: 20,
+        letterSpacing: 0.5,
         color: "#A4A4A4",
     },
     text3: {
         fontSize: 16,
+        letterSpacing: 0.5,
         color: "#A4A4A4",
     },
     logIn: {
         fontSize: 16,
+        letterSpacing: 0.5,
         color: '#dc1e3e',
         textDecorationLine: 'underline',
     },
@@ -74,11 +79,13 @@ const styles = StyleSheet.create({
     },
     tituloPopup: {
         fontSize: 18,
+        letterSpacing: 0.5,
         fontWeight: '700',
     },
     subTitlePopup: {
         marginTop: 9,
         fontSize: 15,
+        letterSpacing: 0.5,
         fontWeight: '500',
     },
     boxBotaoPopup: {

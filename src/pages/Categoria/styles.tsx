@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         marginTop: 2,
         textAlign: 'center',
         fontSize: 24,
+        letterSpacing: 0.5,
     },
     produtosContainer: {
         padding: 0,
@@ -46,11 +47,13 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
     },
     textCardValue: {
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
         color: '#dc1e3e',
     },
 });

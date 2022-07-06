@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         marginTop: 2,
         textAlign: 'center',
         fontSize: 24,
+        letterSpacing: 0.5,
     },
     mainContainer: {
         padding: 16,
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
     },
     buttonAddToCartText: {
         fontSize: 18,
+        letterSpacing: 0.5,
     },
 });
 

@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 32,
+        letterSpacing: 0.5,
         fontWeight: 'bold',
     },
     produtosContainer: {
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
     },
     bottomBox: {
         flex: 1,
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
         color: '#dc1e3e',
     },
     cleanButton: {
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
     },
     cleanButtonText: {
         fontSize: 20,
+        letterSpacing: 0.5,
         fontWeight: '600',
     },
 });

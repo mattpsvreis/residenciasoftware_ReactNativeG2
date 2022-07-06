@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 32,
+        letterSpacing: 0.5,
         fontWeight: 'bold',
     },
     mainContainer: {
@@ -29,19 +30,23 @@ const styles = StyleSheet.create({
     },
     profileName: {
         fontSize: 28,
+        letterSpacing: 0.5,
     },
     profileEmail: {
         fontSize: 14,
+        letterSpacing: 0.5,
         marginTop: 2,
     },
     profileId: {
         fontSize: 14,
+        letterSpacing: 0.5,
         marginTop: 2,
     },
     profileResetPassword: {
         color: '#DC1E3E',
         marginTop: 2,
         fontSize: 14,
+        letterSpacing: 0.5,
         fontWeight: 'bold',
         textDecorationLine: 'underline',
     },
@@ -52,6 +57,7 @@ const styles = StyleSheet.create({
     },
     logoutButtonText: {
         fontSize: 18,
+        letterSpacing: 0.5,
     }
 })
 

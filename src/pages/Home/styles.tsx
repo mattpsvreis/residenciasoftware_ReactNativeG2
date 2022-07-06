@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     },
     searchResult: {
         fontSize: 16,
+        letterSpacing: 0.5,
         borderTopColor: '#1118',
         borderTopWidth: 1,
         borderStyle: 'solid',
@@ -137,11 +138,13 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
     },
     textCardValue: {
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
+        letterSpacing: 0.5,
         color: '#dc1e3e',
     },
 });

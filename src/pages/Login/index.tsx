@@ -94,7 +94,7 @@ const Login = ({ navigation }: any) => {
                 :
                 <Button
                     buttonStyle={styles.button}
-                    titleStyle={{fontSize: 22, fontWeight: '600'}}
+                    titleStyle={{fontSize: 22, fontWeight: '600', letterSpacing: 0.5,}}
                     title='LOGAR'
                     onPress={() => handleLogin(email, senha)}
 
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 25,
+        letterSpacing: 0.5,
         marginBottom: 30,
         color: "#223263",
         textShadowColor: '#223263',
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         fontSize: 15,
+        letterSpacing: 0.5,
         marginBottom: 45,
         color: "#9098B1",
     },
@@ -181,17 +183,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 16,
+        letterSpacing: 0.5,
         margin: 0,
         textDecorationLine: 'underline',
     },
     titulo_naoTemConta: {
         color: '#9098B1',
         fontSize: 16,
+        letterSpacing: 0.5,
         textAlign: 'center',
     },
     titulo_registrar: {
         color: '#DC1E3E',
         fontSize: 16,
+        letterSpacing: 0.5,
         fontWeight: 'bold',
         textAlign: 'center',
         textDecorationLine: 'underline',

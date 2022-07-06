@@ -25,7 +25,7 @@ const BottomTabNavigator = () => {
       screenOptions={{
         headerShown: false,
         // tabBarShowLabel: false,
-        tabBarLabelStyle: { fontSize: 14, fontWeight: '600', },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '600', letterSpacing: 0.5,},
         tabBarStyle: { backgroundColor: '#fff', borderTopWidth: 2, borderBottomWidth: 0, height: 55, },
         tabBarActiveTintColor: '#dc1e3e',
       }}
