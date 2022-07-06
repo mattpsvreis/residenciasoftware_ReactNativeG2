@@ -59,7 +59,6 @@ const Produto = ({ route, navigation }: any) => {
         listFavoritos().forEach((fav: any) =>
             fav.sku === produto.sku ? setIsFavorito(true) : null,
         );
-        console.log("IsFavorito no UseEffect: " + JSON.stringify(isFavorito));
     
         listProdutos().forEach((fav: any) =>
             fav.sku === produto.sku ? setIsCarrinho(true) : null,
