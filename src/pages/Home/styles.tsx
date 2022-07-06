@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     },
     categoriasContainer: {
         paddingBottom: 10,
-        marginBottom: 50,
     },
     categoriaContainer: {
         alignItems: 'center',
@@ -115,6 +114,7 @@ const styles = StyleSheet.create({
         padding: 0,
         paddingBottom: 10,
         marginLeft: -13,
+        marginBottom: 50,
         height: 260,
     },
     produtosContainer2: {

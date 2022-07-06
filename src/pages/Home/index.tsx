@@ -134,22 +134,6 @@ const Home = ({ navigation }: any) => {
       {search === '' ?
         <ScrollView contentContainerStyle={styles.mainContainer}>
           <View>
-            <Text style={styles.titleProdutos}>Produtos</Text>
-            {produtosIsLoading ?
-              <ActivityIndicator size={100} color='#DC1E3E' style={{height: 260}}/>
-              :
-              <FlatList
-                horizontal={true}
-                style={styles.produtosContainer1}
-                data={produtos}
-                keyExtractor={(k, i) => i.toString()}
-                renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
-                ItemSeparatorComponent={
-                  () => <View style={{ width: 10 }} />
-                }
-                onEndReached={loadProdutos}
-              />
-            }
             <View style={styles.offer}>
               <TouchableOpacity onPress={handleOfferPress}>
                 <Image
@@ -175,6 +159,22 @@ const Home = ({ navigation }: any) => {
                 ItemSeparatorComponent={
                   () => <View style={{ width: 16 }} />
                 }
+              />
+            }
+            <Text style={styles.titleProdutos}>Produtos</Text>
+            {produtosIsLoading ?
+              <ActivityIndicator size={100} color='#DC1E3E' style={{ height: 260, marginBottom: 50, }} />
+              :
+              <FlatList
+                horizontal={true}
+                style={styles.produtosContainer1}
+                data={produtos}
+                keyExtractor={(k, i) => i.toString()}
+                renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
+                ItemSeparatorComponent={
+                  () => <View style={{ width: 10 }} />
+                }
+                onEndReached={loadProdutos}
               />
             }
           </View>
