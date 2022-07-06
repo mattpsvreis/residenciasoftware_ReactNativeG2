@@ -109,9 +109,14 @@ const styles = StyleSheet.create({
         letterSpacing: 0.5,
         marginTop: 16,
     },
-    produtosContainer: {
+    produtosContainer1: {
         padding: 0,
         paddingBottom: 10,
+        marginHorizontal: -13,
+        marginBottom: 50,
+    },
+    produtosContainer2: {
+        padding: 0,
         marginHorizontal: -13,
     },
     produtoContainer: {

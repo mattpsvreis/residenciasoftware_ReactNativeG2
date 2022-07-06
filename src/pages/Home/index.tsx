@@ -76,7 +76,11 @@ const Home = ({ navigation }: any) => {
   };
 
   const handleOfferPress = () => {
-    return null; //TODO
+    navigation.navigate({
+      name: 'Produto', params: {
+        produto: produtos[0],
+      }
+    });
   };
 
   React.useEffect(() => {
@@ -147,7 +151,7 @@ const Home = ({ navigation }: any) => {
               :
               <FlatList
                 horizontal={true}
-                style={styles.produtosContainer}
+                style={styles.produtosContainer1}
                 data={produtos}
                 keyExtractor={(k, i) => i.toString()}
                 renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
@@ -163,7 +167,7 @@ const Home = ({ navigation }: any) => {
           <FlatList
             horizontal={false}
             numColumns={2}
-            style={styles.produtosContainer}
+            style={styles.produtosContainer2}
             data={produtosSearch}
             keyExtractor={(k, i) => i.toString()}
             renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
