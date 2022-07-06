@@ -14,9 +14,12 @@ const Login = ({ navigation }: any) => {
 
     const { login }: any = useContext(AutenticacaoContext);
 
-    const handleLogin = async (email: string, senha: string) => {
-        console.log(`Email: ${email} - Senha: ${senha}`)
+    const clearInputs = () => {
+        setEmail('');
+        setSenha('');
+    }
 
+    const handleLogin = async (email: string, senha: string) => {
         setLoading(true);
         const respostaLogin = await login(email, senha);
         setLoading(false);
@@ -29,9 +32,20 @@ const Login = ({ navigation }: any) => {
                 ]
             );
         } else {
+            clearInputs();
             navigation.navigate('Home');
         }
 
+    }
+
+    const handleNavigateRegister = () => {
+        clearInputs();
+        navigation.navigate('Cadastro');
+    }
+
+    const handleNavigateResetPassword = () => {
+        clearInputs();
+        navigation.navigate('ForgotPassword');
     }
 
     return (
@@ -86,15 +100,19 @@ const Login = ({ navigation }: any) => {
 
                 />
             }
-            <TouchableOpacity onPress={() => { }}>
-                <Text style={styles.titulo_esqueceuSenha}>Esqueceu sua senha?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }}>
-                <Text style={styles.titulo_naoTemConta}>Não tem uma conta?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }}>
-                <Text style={styles.titulo_registrar}>Registre-se</Text>
-            </TouchableOpacity>
+            <Button
+                buttonStyle={styles.button2}
+                titleStyle={styles.titulo_esqueceuSenha}
+                onPress={handleNavigateResetPassword}
+                title='Esqueceu sua senha?'
+            />
+            <Text style={styles.titulo_naoTemConta}>Não tem uma conta?</Text>
+            <Button
+                buttonStyle={styles.button3}
+                titleStyle={styles.titulo_registrar}
+                onPress={handleNavigateRegister}
+                title='Registre-se'
+            />
         </View>
     );
 }
@@ -106,6 +124,17 @@ const styles = StyleSheet.create({
         padding: 16,
         alignItems: 'stretch',
         justifyContent: 'center'
+    },
+    button2: {
+        padding: 0,
+        margin: 0,
+        marginVertical: 10,
+        backgroundColor: '#fff',
+    },
+    button3: {
+        padding: 0,
+        margin: 0,
+        backgroundColor: '#fff',
     },
     logoDV_container: {
         alignItems: 'center',
@@ -130,9 +159,10 @@ const styles = StyleSheet.create({
     },
     input_container: {
         backgroundColor: '#fff',
-        borderColor: '#e6e6e9',
+        borderColor: '#1114',
         borderWidth: 1,
         padding: 10,
+        borderRadius: 10,
     },
     input: {
         color: '#80879c',
@@ -143,24 +173,28 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 70,
         alignSelf: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 10,
     },
     titulo_esqueceuSenha: {
         color: '#DC1E3E',
         textAlign: 'center',
-        marginTop: 10,
         fontWeight: 'bold',
+        fontSize: 16,
+        margin: 0,
+        textDecorationLine: 'underline',
     },
     titulo_naoTemConta: {
         color: '#9098B1',
-        marginTop: 20,
+        fontSize: 16,
         textAlign: 'center',
     },
     titulo_registrar: {
         color: '#DC1E3E',
+        fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginTop: 5,
+        textDecorationLine: 'underline',
     },
 
 })
