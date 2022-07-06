@@ -1,24 +1,36 @@
 import React from "react";
-
-import { View, StyleSheet, TouchableOpacity, TouchableHighlight, ActivityIndicator } from 'react-native';
-import { Button, Text, Image, Icon } from "react-native-elements";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
+
+import { View, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { Button, Text, Image, Icon } from "react-native-elements";
+
+import styles from "./styles";
+import { FavoritosContext } from "../../context/FavoritosContext";
 
 const Produto = ({ route, navigation }: any) => {
     const { produto } = route.params;
-    const { addProduto } = React.useContext(CarrinhoContext);
+    const { addProduto, listProdutos, addQuantity } = React.useContext(CarrinhoContext);
+
+    const { listFavoritos, addFavorito, removeFavorito } = React.useContext(FavoritosContext);
+
+    const [isFavorito, setIsFavorito] = React.useState(false);
+    const [isCarrinho, setIsCarrinho] = React.useState(false);
 
     const [loadingAddToCart, setLoadingAddToCart] = React.useState(false);
 
     const handleAddToCart = async () => {
         setLoadingAddToCart(true)
-        await addProduto(
-            produto.sku,
-            produto.nomeProduto,
-            produto.descricaoProduto,
-            produto.precoProduto,
-            produto.imagemProduto
-        )
+        if (isCarrinho == true) {
+            await addQuantity(produto.sku);
+        } else {
+            await addProduto(
+                produto.sku,
+                produto.nomeProduto,
+                produto.descricaoProduto,
+                produto.precoProduto,
+                produto.imagemProduto
+            )
+        }
         setLoadingAddToCart(false)
         navigation.navigate('CarrinhoTabScreen')
     }
@@ -27,10 +39,37 @@ const Produto = ({ route, navigation }: any) => {
         navigation.goBack()
     }
 
+    const handleFavorite = async () => {
+        if (isFavorito == true) {
+            await removeFavorito(produto.sku);
+            setIsFavorito(false);
+        } else {
+            await addFavorito(
+                produto.sku,
+                produto.nomeProduto,
+                produto.descricaoProduto,
+                produto.precoProduto,
+                produto.imagemProduto
+            )
+            setIsFavorito(true);
+        }
+    }
+
+    React.useEffect(() => {
+        listFavoritos().forEach((fav: any) =>
+            fav.sku === produto.sku ? setIsFavorito(true) : null,
+        );
+        console.log("IsFavorito no UseEffect: " + JSON.stringify(isFavorito));
+    
+        listProdutos().forEach((fav: any) =>
+            fav.sku === produto.sku ? setIsCarrinho(true) : null,
+        );
+    }, [])
+
     return (
         <View style={styles.body}>
             <View style={styles.header}>
-                <TouchableHighlight onPress={handleReturn} underlayColor='#dc1e3e' style={{borderRadius: 150}}>
+                <TouchableHighlight onPress={handleReturn} underlayColor='#dc1e3e' style={{ borderRadius: 150 }}>
                     <Icon
                         name='arrow-left'
                         color="#dc1e3e"
@@ -41,6 +80,45 @@ const Produto = ({ route, navigation }: any) => {
                 </TouchableHighlight>
                 <Text style={styles.title}>{produto.nomeProduto}</Text>
             </View>
+            <View style={styles.mainContainer}>
+                <View style={styles.boxImagem}>
+                    <Image
+                        source={{ uri: produto.imagemProduto }}
+                        style={styles.imagemProduto}
+                        width={undefined}
+                        height={undefined}
+                    />
+                </View>
+                <View style={styles.boxNomeProduto}>
+                    <Text style={styles.nomeProduto}>{produto.nomeProduto}</Text>
+                    <TouchableHighlight onPress={handleFavorite} underlayColor='#dc1e3e' style={{ borderRadius: 150 }}>
+                        {isFavorito ?
+                            <Icon
+                                name='heart'
+                                color="#dc1e3e"
+                                type='material-community'
+                                size={28}
+                                tvParallaxProperties={undefined}
+                            />
+                            :
+                            <Icon
+                                name='heart-outline'
+                                color="#aaa"
+                                type='material-community'
+                                size={28}
+                                tvParallaxProperties={undefined}
+                            />
+                        }
+                    </TouchableHighlight>
+                </View>
+                <Text style={styles.valorProduto}>R$ {parseFloat(produto.precoProduto).toFixed(2).replace('.', ',')}</Text>
+                <Text style={styles.detalhesProduto}>Especificações</Text>
+                <View style={styles.boxDescricaoProduto}>
+                    <Text style={styles.titleDescricaoProduto}>Descrição do Produto:</Text>
+                    <Text style={styles.skuProduto}>{produto.sku}</Text>
+                </View>
+                <Text style={styles.descricaoProduto}>{produto.descricaoProduto}</Text>
+            </View>
             {loadingAddToCart ?
                 <ActivityIndicator size='large' color='#DC1E3E' />
                 :
@@ -49,40 +127,5 @@ const Produto = ({ route, navigation }: any) => {
         </View>
     )
 }
-
-export const styles = StyleSheet.create({
-    body: {
-        alignItems: 'stretch',
-        justifyContent: 'space-between',
-        paddingVertical: 16,
-        backgroundColor: '#fff',
-        height: '100%',
-    },
-    header: {
-        flexDirection: 'row',
-        borderBottomWidth: 2,
-        borderBottomColor: '#1119',
-        borderStyle: 'solid',
-        paddingBottom: 9,
-        paddingLeft: 10,
-        width: '100%',
-        marginTop: -8,
-    },
-    title: {
-        marginLeft: 10,
-        marginTop: 2,
-        textAlign: 'center',
-        fontSize: 24,
-    },
-    buttonAddToCart: {
-        backgroundColor: '#dc1e3e',
-        marginHorizontal: 16,
-        height: 57,
-        borderRadius: 5,
-    },
-    buttonAddToCartText: {
-        fontSize: 18,
-    },
-});
 
 export default Produto;
