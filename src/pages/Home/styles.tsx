@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     produtosContainer2: {
         padding: 0,
         marginHorizontal: -13,
+        marginBottom: 130,
     },
     produtoContainer: {
         width: 165,

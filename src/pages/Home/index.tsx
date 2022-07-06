@@ -63,16 +63,19 @@ const Home = ({ navigation }: any) => {
   }
 
   const getDadosProdutosBusca = async () => {
+    setProdutosIsLoading(true)
     AxiosInstance.get(`/produto/busca?keyword=${search}`, {
       headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         setProdutosSearch(result.data);
+        setProdutosIsLoading(false);
       })
       .catch(error => {
         console.log(
           'Erro ao carregar a lista de produtos - ' + JSON.stringify(error),
         );
+        setProdutosIsLoading(false);
       });
   };
 
