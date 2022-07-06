@@ -12,8 +12,8 @@ const CategoriaButton = (props: any) => {
       return require(`../assets/icons/pants.png`)
     } else if (props.categoria.nomeCategoria === 'Shorts') {
       return require(`../assets/icons/shorts.png`)
-    } else if (props.categoria.nomeCategoria === 'Acessórios') {
-      return require(`../assets/icons/acessories.png`)
+    } else if (props.categoria.nomeCategoria === 'Casacos') {
+      return require(`../assets/icons/hoodies.png`)
     } else if (props.categoria.nomeCategoria === 'Calçados') {
       return require(`../assets/icons/shoes.png`)
     } else {

@@ -1,7 +1,7 @@
 import React from "react";
 import { CarrinhoContext } from "../../context/CarrinhoContext";
 
-import { View, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { View, TouchableHighlight, ActivityIndicator, ScrollView } from 'react-native';
 import { Button, Text, Image, Icon } from "react-native-elements";
 
 import styles from "./styles";
@@ -59,7 +59,7 @@ const Produto = ({ route, navigation }: any) => {
         listFavoritos().forEach((fav: any) =>
             fav.sku === produto.sku ? setIsFavorito(true) : null,
         );
-    
+
         listProdutos().forEach((fav: any) =>
             fav.sku === produto.sku ? setIsCarrinho(true) : null,
         );
@@ -79,7 +79,7 @@ const Produto = ({ route, navigation }: any) => {
                 </TouchableHighlight>
                 <Text style={styles.title}>{produto.nomeProduto}</Text>
             </View>
-            <View style={styles.mainContainer}>
+            <ScrollView contentContainerStyle={styles.mainContainer}>
                 <View style={styles.boxImagem}>
                     <Image
                         source={{ uri: produto.imagemProduto }}
@@ -117,7 +117,7 @@ const Produto = ({ route, navigation }: any) => {
                     <Text style={styles.skuProduto}>{produto.sku}</Text>
                 </View>
                 <Text style={styles.descricaoProduto}>{produto.descricaoProduto}</Text>
-            </View>
+            </ScrollView>
             {loadingAddToCart ?
                 <ActivityIndicator size='large' color='#DC1E3E' />
                 :

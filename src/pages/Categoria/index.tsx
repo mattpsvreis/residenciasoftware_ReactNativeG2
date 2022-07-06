@@ -61,6 +61,7 @@ export default function Categoria({ route, navigation }: any) {
                 <FlatList
                     data={produtos}
                     horizontal={false}
+                    numColumns={2}
                     contentContainerStyle={styles.produtosContainer}
                     renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
                     ItemSeparatorComponent={

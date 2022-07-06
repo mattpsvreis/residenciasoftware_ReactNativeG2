@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     produtoContainer: {
         width: 165,
-        height: 229,
+        height: 245,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'flex-end',
     },
     textCardValue: {
         textAlign: 'left',

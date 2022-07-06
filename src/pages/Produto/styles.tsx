@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         width: '100%',
         marginTop: -8,
+        alignItems: 'center',
     },
     title: {
         marginLeft: 10,
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         padding: 16,
-        flex: 1,
         alignItems: 'stretch',
         justifyContent: 'flex-start',
     },
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     },
     boxNomeProduto: {
         marginTop: 18,
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
@@ -50,6 +49,7 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: 'bold',
         letterSpacing: 0.5,
+        width: '80%',
     },
     valorProduto: {
         fontSize: 24,
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         letterSpacing: 0.5,
     },
     boxDescricaoProduto: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
         letterSpacing: 0.5,
     },
     descricaoProduto: {
-        flex: 1,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         color: '#777',
