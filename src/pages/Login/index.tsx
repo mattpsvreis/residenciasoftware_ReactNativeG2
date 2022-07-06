@@ -95,7 +95,8 @@ const Login = ({ navigation }: any) => {
                 :
                 <Button
                     buttonStyle={styles.button}
-                    title='Logar'
+                    titleStyle={{fontSize: 22, fontWeight: '600'}}
+                    title='LOGAR'
                     onPress={() => handleLogin(email, senha)}
 
                 />

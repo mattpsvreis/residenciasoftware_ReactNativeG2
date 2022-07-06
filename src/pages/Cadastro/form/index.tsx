@@ -1,26 +1,33 @@
 import React, { useState } from "react";
+import AxiosInstance from "../../../api/AxiosInstance";
 
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import { Button, Input } from "react-native-elements";
 
 import styles from "./style"
 
-export default function Form({ navigation }: any) {
+export default function Form(props: any) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const imagem = '';
 
-    const [errorName, setErrorName] = useState("");
-    const [errorEmail, setErrorEmail] = useState("");
-    const [errorPassword, setErrorPassword] = useState("");
+    const [isLoading, setLoading] = useState(false)
 
-    const alternar = () => {
-        navigation.navigate("");
+    const handleReturn = () => {
+        props.navigation.goBack();
     }
 
     const handleCadastrar = async () => {
-        return null; //TODO
+        try {
+            const res = await AxiosInstance.post('/autenticacao/registro',{ 
+                nomeUsuario: name, email: email, fotoPerfil: imagem, senha: password
+            })
+            setLoading(false)
+          } catch (error) {
+            console.log('Erro ao cadastrar o cliente: ' + JSON.stringify(error))
+          }
     }
 
     return (
@@ -57,9 +64,13 @@ export default function Form({ navigation }: any) {
                     title='CADASTRAR'
                 />
             </View>
-            <TouchableOpacity onPress={alternar}>
-                <Text style={styles.subTitle}>Já tem uma conta? Log In</Text>
-            </TouchableOpacity>
+                <Text style={styles.text3}>Já tem uma conta?</Text>
+            <Button
+                buttonStyle={styles.button2}
+                titleStyle={styles.logIn}
+                onPress={handleReturn}
+                title='Logar'
+            />
         </View>
     );
 }

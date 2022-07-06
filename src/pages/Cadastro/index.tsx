@@ -1,16 +1,18 @@
 import React from "react";
-import { View } from "react-native";
 
-import styles from "./style";
+import { ScrollView } from "react-native";
+
 import Title from "./titulo";
 import Form from "./form";
 
-export default function Cadastro(navigation) {
+import styles from "./style";
+
+export default function Cadastro({ navigation }: any) {
 
     return (
-        <View style={styles.container} >
+        <ScrollView contentContainerStyle={styles.container} >
             <Title />
-            <Form />
-        </View>
+            <Form navigation={navigation}/>
+        </ScrollView>
     );
 }
