@@ -55,6 +55,41 @@ const styles = StyleSheet.create({
         marginTop: 2,
         backgroundColor: '#fff',
     },
+    boxModal: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#0005',
+    },
+    modal: {
+        backgroundColor: "white",
+        borderRadius: 20,
+        margin: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+    },
+    tituloPopup: {
+        fontSize: 18,
+        fontWeight: '700',
+    },
+    subTitlePopup: {
+        marginTop: 9,
+        fontSize: 15,
+        fontWeight: '500',
+    },
+    boxBotaoPopup: {
+        marginTop: 20,
+    },
+    buttaoPopup: {
+        backgroundColor: '#dc1e3e',
+        borderRadius: 10,
+        padding: 8,
+        width: 90,
+    },
 });
 
 export default styles;
