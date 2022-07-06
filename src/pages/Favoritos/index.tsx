@@ -20,7 +20,6 @@ export default function Favoritos({ navigation }: any) {
  
   const [produtosIsLoading, setProdutosIsLoading] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [state, setState] = React.useState(false);
 
   const getDadosFavoritos = () => {
     setFavoritos(listFavoritos());
@@ -39,7 +38,7 @@ export default function Favoritos({ navigation }: any) {
     <View style={styles.body}>
       <Text style={styles.title}>Favoritos</Text>
       {produtosIsLoading ?
-        <ActivityIndicator size='large' color='#fff' />
+        <ActivityIndicator size='large' color='#dc1e3e' />
         :
         <FlatList
           data={favoritos}
