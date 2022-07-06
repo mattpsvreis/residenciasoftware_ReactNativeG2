@@ -3,12 +3,12 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     body: {
         alignItems: 'stretch',
-        justifyContent: 'center',
         padding: 16,
         backgroundColor: '#fff',
+        minHeight: '100%',
     },
-    container: {
-
+    mainContainer: {
+        alignItems: 'stretch',
     },
     searchInput: {
         borderWidth: 1,
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 16,
         marginHorizontal: -10,
+        marginBottom: 10,
     },
     searchInputText: {
         marginLeft: 8,

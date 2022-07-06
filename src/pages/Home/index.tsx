@@ -79,10 +79,6 @@ const Home = ({ navigation }: any) => {
     return null; //TODO
   };
 
-  const handleSearchPress = () => {
-    return null; //TODO
-  };
-
   React.useEffect(() => {
     pesquisarProduto(search);
   }, [search]);
@@ -93,7 +89,7 @@ const Home = ({ navigation }: any) => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={styles.body}>
+    <View style={styles.body}>
       <View>
         <Input
           placeholder="Buscar Produto"
@@ -115,64 +111,69 @@ const Home = ({ navigation }: any) => {
           }
         />
       </View>
-      {produtosSearch.length < 1 ? null :
-        <View style={styles.searchResults}>
-          {
-            produtosSearch.map((k, i) => (
-              <TouchableHighlight key={i} activeOpacity={1} underlayColor={'#dc1e3e'}>
-                <Text
-                  style={styles.searchResult}
-                  onPress={handleSearchPress}
+      {search === '' ?
+        <ScrollView contentContainerStyle={styles.mainContainer}>
+          <View>
+            <View style={styles.offer}>
+              <TouchableOpacity onPress={handleOfferPress}>
+                <Image
+                  source={require('../../assets/offerImage.png')}
+                  style={styles.offerImage}
+                  width={undefined}
+                  height={undefined}
                 >
-                  {k.nomeProduto}
-                </Text>
-              </TouchableHighlight>))
-          }
+                  <Text style={styles.offerText}>Oferta Imperdível 50% Off</Text>
+                </Image>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.titleCategorias}>Categorias</Text>
+            {categoriasIsLoading ?
+              <ActivityIndicator size='large' color='#DC1E3E' />
+              :
+              <FlatList
+                horizontal={true}
+                style={styles.categoriasContainer}
+                data={categorias}
+                keyExtractor={(k, i) => i.toString()}
+                renderItem={response => <CategoriaButton categoria={response.item} navigation={navigation} styles={styles} />}
+                ItemSeparatorComponent={
+                  () => <View style={{ width: 16 }} />
+                }
+              />
+            }
+            <Text style={styles.titleProdutos}>Produtos</Text>
+            {produtosIsLoading ?
+              <ActivityIndicator size='large' color='#DC1E3E' />
+              :
+              <FlatList
+                horizontal={true}
+                style={styles.produtosContainer}
+                data={produtos}
+                keyExtractor={(k, i) => i.toString()}
+                renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
+                ItemSeparatorComponent={
+                  () => <View style={{ width: 10 }} />
+                }
+              />
+            }
+          </View>
+        </ScrollView>
+        :
+        <View style={styles.mainContainer}>
+          <FlatList
+            horizontal={false}
+            numColumns={2}
+            style={styles.produtosContainer}
+            data={produtosSearch}
+            keyExtractor={(k, i) => i.toString()}
+            renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
+            ItemSeparatorComponent={
+              () => <View style={{ width: 10 }} />
+            }
+          />
         </View>
       }
-      <View style={styles.offer}>
-        <TouchableOpacity onPress={handleOfferPress}>
-          <Image
-            source={require('../../assets/offerImage.png')}
-            style={styles.offerImage}
-            width={undefined}
-            height={undefined}
-          >
-            <Text style={styles.offerText}>Oferta Imperdível 50% Off</Text>
-          </Image>
-        </TouchableOpacity>
-      </View>
-      <Text style={styles.titleCategorias}>Categorias</Text>
-      {categoriasIsLoading ?
-        <ActivityIndicator size='large' color='#DC1E3E' />
-        :
-        <FlatList
-          horizontal={true}
-          style={styles.categoriasContainer}
-          data={categorias}
-          keyExtractor={(k, i) => i.toString()}
-          renderItem={response => <CategoriaButton categoria={response.item} navigation={navigation} styles={styles} />}
-          ItemSeparatorComponent={
-            () => <View style={{ width: 16 }} />
-          }
-        />
-      }
-      <Text style={styles.titleProdutos}>Produtos</Text>
-      {produtosIsLoading ?
-        <ActivityIndicator size='large' color='#DC1E3E' />
-        :
-        <FlatList
-          horizontal={true}
-          style={styles.produtosContainer}
-          data={produtos}
-          keyExtractor={(k, i) => i.toString()}
-          renderItem={response => <ProdutoCard produto={response.item} navigation={navigation} styles={styles} />}
-          ItemSeparatorComponent={
-            () => <View style={{ width: 10 }} />
-          }
-        />
-      }
-    </ScrollView>
+    </View>
   )
 }
 
