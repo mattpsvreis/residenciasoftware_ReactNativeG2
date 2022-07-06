@@ -22,6 +22,9 @@ const Home = ({ navigation }: any) => {
   const [categorias, setCategorias] = React.useState<CategoriaType[]>([]);
   const [produtos, setProdutos] = React.useState<ProdutoType[]>([]);
 
+  const [page, setPage] = React.useState('0');
+  const [qtd, setQtd] = React.useState(10);
+
   const [categoriasIsLoading, setCategoriasIsLoading] = React.useState(true);
   const [produtosIsLoading, setProdutosIsLoading] = React.useState(true);
 
@@ -42,14 +45,20 @@ const Home = ({ navigation }: any) => {
   }
 
   const getDadosProdutos = async () => {
+    setProdutosIsLoading(true)
     AxiosInstance
-      .get('/produto', { headers: { "Authorization": `Bearer ${usuario.token}` } })
+      .get(`/produto?pagina=${page}&qtdRegistros=${qtd}`, { headers: { "Authorization": `Bearer ${usuario.token}` } })
       .then(result => {
         setProdutos(result.data);
+        setPage((parseInt(page) + 1).toString());
+        if(page === '2') {
+          setPage('0')
+        }
         setProdutosIsLoading(false);
       })
       .catch((error) => {
         console.log('Erro ao carregar a lista de produtos: ' + JSON.stringify(error))
+        setProdutosIsLoading(false);
       });
   }
 
@@ -82,6 +91,10 @@ const Home = ({ navigation }: any) => {
       }
     });
   };
+
+  const loadProdutos = async () => {
+    await getDadosProdutos();
+  }
 
   React.useEffect(() => {
     pesquisarProduto(search);
@@ -158,6 +171,7 @@ const Home = ({ navigation }: any) => {
                 ItemSeparatorComponent={
                   () => <View style={{ width: 10 }} />
                 }
+                onEndReached={loadProdutos}
               />
             }
           </View>
