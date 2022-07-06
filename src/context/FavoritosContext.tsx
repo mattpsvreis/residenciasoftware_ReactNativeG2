@@ -1,19 +1,21 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import Realm from 'realm';
 
-export const FavoritosContext = createContext({});
+import { AutenticacaoContext } from './AutenticacaoContext';
+
+export const FavoritosContext = React.createContext({});
 
 class FavoritosSchema extends Realm.Object { }
 FavoritosSchema.schema = {
   name: 'Favorito',
   properties: {
     idProduto: { type: 'int', default: 0 },
+    idUsuario: { type: 'int', default: 0 },
     sku: 'string',
     nomeProduto: 'string',
     descricaoProduto: 'string',
     precoProduto: 'double',
     imagemProduto: 'string',
-    quantidade: { type: 'int', default: 1 },
   },
 };
 
@@ -23,14 +25,23 @@ let realmFavoritos = new Realm({
   path: 'ListaFavoritos',
 });
 
-export function FavoritosProvider({ children }) {
-  const [favoritos, setFavoritos] = useState([]);
+export function FavoritosProvider({ children }: any) {
+  const [favoritos, setFavoritos] = React.useState([]);
+  const { usuario } = React.useContext(AutenticacaoContext);
 
   const listFavoritos = () => {
-    return realmFavoritos.objects('Favorito');
+    return realmFavoritos
+      .objects('Favorito')
+      .filter(produto => produto.idUsuario == usuario.id);
   };
 
-  const addFavoritos = (
+  const countFavoritos = () => {
+    return realmFavoritos
+      .objects('Favorito')
+      .filter(produto => produto.idUsuario == usuario.id).length;
+  };
+
+  const addFavorito = (
     _sku: string,
     _nome: string,
     _descricao: string,
@@ -47,29 +58,35 @@ export function FavoritosProvider({ children }) {
     realmFavoritos.write(() => {
       const produto = realmFavoritos.create('Favorito', {
         idProduto: nextId,
+        idUsuario: usuario.id,
         sku: _sku,
         nomeProduto: _nome,
         descricaoProduto: _descricao,
         precoProduto: _preco,
         imagemProduto: _imagem,
-        quantidade: 1,
       });
     });
   };
 
-  const removeFavoritos = (_id: number) => {
+  const removeFavorito = (_sku: string) => {
     realmFavoritos.write(() => {
       realmFavoritos.delete(
         realmFavoritos
           .objects('Favorito')
-          .filter(produto => produto.idProduto == _id),
+          .filter(
+            produto => produto.sku == _sku && produto.idUsuario == usuario.id,
+          ),
       );
     });
   };
 
   const resetFavoritos = () => {
     realmFavoritos.write(() => {
-      realmFavoritos.deleteAll();
+      realmFavoritos.delete(
+        realmFavoritos
+          .objects('Favorito')
+          .filter(produto => produto.idUsuario == user.id),
+      );
     });
   };
 
@@ -77,11 +94,12 @@ export function FavoritosProvider({ children }) {
     <FavoritosContext.Provider
       value={{
         listFavoritos,
-        addFavoritos,
-        removeFavoritos,
+        addFavorito,
+        removeFavorito,
         favoritos,
         setFavoritos,
         resetFavoritos,
+        countFavoritos,
       }}>
       {children}
     </FavoritosContext.Provider>
