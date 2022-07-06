@@ -26,8 +26,8 @@ export default function Form(props: any) {
         setImagem('');
     }
 
-    function nameNumRegex(str: string) {
-        return /[0-9]/.test(str)
+    function nameRegex(str: string) {
+        return /^[A-Za-z0-9 ]+$/.test(str)
     }
 
     function emailRegex(str: string) {
@@ -41,7 +41,7 @@ export default function Form(props: any) {
                 setErrorMessage(e => 'Um de seus campos está vazio!')
                 setPopupError(true)
                 setLoading(false)
-            } else if (nameNumRegex(name)) {
+            } else if (!nameRegex(name)) {
                 setErrorMessage(e => 'Seu nome contém caracteres inválidos!')
                 setPopupError(true)
                 setLoading(false)
@@ -49,7 +49,7 @@ export default function Form(props: any) {
                 setErrorMessage(e => 'Sua senha é muito fraca!')
                 setPopupError(true)
                 setLoading(false)
-            } else if (emailRegex(email) === false) {
+            } else if (!emailRegex(email)) {
                 setErrorMessage(e => 'Seu e-mail é inválido!')
                 setPopupError(true)
                 setLoading(false)
