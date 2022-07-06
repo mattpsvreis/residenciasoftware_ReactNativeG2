@@ -14,7 +14,7 @@ export default function Perfil({ navigation }: any) {
   const { usuario } = React.useContext(AutenticacaoContext);
 
   const handleResetPassword = () => {
-    return null; //TODO
+    navigation.navigate('ForgotPassword')
   }
 
   const handleLogout = () => {
