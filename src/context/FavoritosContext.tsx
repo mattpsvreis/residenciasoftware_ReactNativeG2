@@ -85,7 +85,7 @@ export function FavoritosProvider({ children }: any) {
       realmFavoritos.delete(
         realmFavoritos
           .objects('Favorito')
-          .filter(produto => produto.idUsuario == user.id),
+          .filter(produto => produto.idUsuario == usuario.id),
       );
     });
   };

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     produtosContainer: {
         padding: 0,
-        paddingBottom: 10,
+        paddingBottom: 30,
         marginTop: 10,
         marginHorizontal: 10,
     },
@@ -32,15 +32,29 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     textCardTitle: {
-        textAlign: 'left',
+        textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 14,
+    },
+    bottomBox: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     textCardValue: {
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 14,
         color: '#dc1e3e',
+    },
+    cleanButton: {
+        marginHorizontal: 16,
+        borderRadius: 10,
+        backgroundColor: '#dc1e3e',
+    },
+    cleanButtonText: {
+        fontSize: 20,
+        fontWeight: '600',
     },
 });
 
