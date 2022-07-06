@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     title: {
         marginLeft: 10,
         marginTop: 2,
-        textAlign: 'center',
+        marginRight: 50,
+        textAlign: 'left',
         fontSize: 24,
         letterSpacing: 0.5,
     },

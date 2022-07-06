@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     },
     cleanButton: {
         marginHorizontal: 16,
-        borderRadius: 10,
+        height: 57,
+        borderRadius: 5,
         backgroundColor: '#dc1e3e',
     },
     cleanButtonText: {
