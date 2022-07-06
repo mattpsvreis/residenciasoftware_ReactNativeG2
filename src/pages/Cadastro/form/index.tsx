@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AxiosInstance from "../../../api/AxiosInstance";
 
 import { View, Text, Alert, Modal } from "react-native";
@@ -8,16 +8,16 @@ import styles from "./style"
 
 export default function Form(props: any) {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [imagem, setImagem] = useState('');
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [imagem, setImagem] = React.useState('');
 
-    const [isPopupError, setPopupError] = useState(false)
-    const [isPopupSucess, setPopupSucess] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('');
+    const [isPopupError, setPopupError] = React.useState(false)
+    const [isPopupSucess, setPopupSucess] = React.useState(false)
+    const [errorMessage, setErrorMessage] = React.useState('');
 
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = React.useState(false)
 
     const clearInputs = () => {
         setName('');

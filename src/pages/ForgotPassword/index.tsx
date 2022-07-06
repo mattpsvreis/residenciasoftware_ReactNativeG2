@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AxiosInstance from '../../api/AxiosInstance';
 
 import { View, Modal, TouchableHighlight, ActivityIndicator } from 'react-native';
@@ -7,15 +7,15 @@ import { Button, Icon, Image, Input, Text } from 'react-native-elements';
 import styles from './styles';
 
 const ForgotPassword = ({ navigation }: any) => {
-  const [id, setId] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isLoading, setLoading] = useState(false);
-  const [isPopupError, setPopupError] = useState(false);
-  const [isPopupSucess, setPopupSucess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [id, setId] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [isLoading, setLoading] = React.useState(false);
+  const [isPopupError, setPopupError] = React.useState(false);
+  const [isPopupSucess, setPopupSucess] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   function numRegex(str: string) {
     return /[0-9]/.test(str);
