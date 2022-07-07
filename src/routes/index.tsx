@@ -15,17 +15,20 @@ import Categoria from '../pages/Categoria';
 import Produto from '../pages/Produto';
 import ForgotPassword from '../pages/ForgotPassword';
 import Cadastro from '../pages/Cadastro';
+import { CarrinhoContext } from '../context/CarrinhoContext';
 
 const StackNavigation = createNativeStackNavigator();
 const TabNavigation = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const { countProdutos } = React.useContext(CarrinhoContext);
+
   return (
     <TabNavigation.Navigator
       screenOptions={{
         headerShown: false,
         // tabBarShowLabel: false,
-        tabBarLabelStyle: { fontSize: 14, fontWeight: '600', letterSpacing: 0.5,},
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '600', letterSpacing: 0.5, },
         tabBarStyle: { backgroundColor: '#fff', borderTopWidth: 2, borderBottomWidth: 0, height: 55, },
         tabBarActiveTintColor: '#dc1e3e',
       }}
@@ -62,22 +65,42 @@ const BottomTabNavigator = () => {
           ),
         }}
       />
-      <TabNavigation.Screen
-        name='CarrinhoTabScreen'
-        component={Carrinho}
-        options={{
-          tabBarLabel: 'Carrinho',
-          tabBarIcon: ({ focused }) => (
-            <Icon
-              name='cart'
-              color={focused ? "#dc1e3e" : "#151515"}
-              type='material-community'
-              size={28}
-              tvParallaxProperties={undefined}
-            />
-          ),
-        }}
-      />
+      {countProdutos() < 1 ?
+        <TabNavigation.Screen
+          name='CarrinhoTabScreen'
+          component={Carrinho}
+          options={{
+            tabBarLabel: 'Carrinho',
+            tabBarIcon: ({ focused }) => (
+              <Icon
+                name='cart'
+                color={focused ? "#dc1e3e" : "#151515"}
+                type='material-community'
+                size={28}
+                tvParallaxProperties={undefined}
+              />
+            ),
+          }}
+        />
+        :
+        <TabNavigation.Screen
+          name='CarrinhoTabScreen'
+          component={Carrinho}
+          options={{
+            tabBarLabel: 'Carrinho',
+            tabBarBadge: countProdutos(),
+            tabBarIcon: ({ focused }) => (
+              <Icon
+                name='cart'
+                color={focused ? "#dc1e3e" : "#151515"}
+                type='material-community'
+                size={28}
+                tvParallaxProperties={undefined}
+              />
+            ),
+          }}
+        />
+      }
       <TabNavigation.Screen
         name='PerfilTabScreen'
         component={Perfil}
