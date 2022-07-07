@@ -72,7 +72,7 @@ export default function Form(props: any) {
         try {
             setLoading(true)
             await AxiosInstance.post('/autenticacao/registro', {
-                nameUsuario: name, email: email, fotoPerfil: imagem, password: password
+                nameUsuario: name, email: email, fotoPerfil: imagem, senha: password
             })
             Alert.alert(
                 "Sucesso",
